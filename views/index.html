@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>CStoreFE</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="stylesheet" href="/admin/plugins/layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="/admin/css/global.css" media="all">
+    <link rel="stylesheet" href="/admin/plugins/font-awesome/css/font-awesome.min.css">
+    <style>
+        #app{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        h1{
+            font-size: 70px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header header header-demo">
+            <div class="layui-main">
+                <div class="admin-login-box">
+                    <a class="logo" style="left: 0;" href="http://beginner.zhengjinfan.cn/demo/beginner_admin/">
+                        <span style="font-size: 22px;">CStoreFE</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="layui-side layui-bg-black" id="admin-side">
+            <div class="layui-side-scroll" id="admin-navbar-side" lay-filter="side">
+                    <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                        <li class="layui-nav-item layui-nav-itemed">
+                            <a href="javascript:;">开发工具</a>
+                            <dl class="layui-nav-child">
+                                <dd><a href="/fetools/VSCodeSetup-x64-1.16.1.exe">FE</a></dd>
+                                <dd><a href="javascript:;">Java</a></dd>
+                                <dd><a href="javascript:;">RN</a></dd>
+                            </dl>
+                        </li>
+                        <li class="layui-nav-item"><a href="javascript:;">共享文档</a></li>
+                        <li class="layui-nav-item"><a href="javascript:;">CodeReView</a></li>
+                    </ul>
+            </div>
+        </div>
+        <div class="layui-body" style="bottom: 0;border-left: solid 1px #1AA094;" id="admin-body">
+            <div class="layui-tab admin-nav-card layui-tab-brief" lay-filter="admin-tab">
+                <div class="layui-tab-content" style="min-height: 150px; padding: 5px 0 0 0;">
+                    <div class="layui-tab-item layui-show">
+                        <!-- <iframe src="/admin/main.html"></iframe> -->
+                        <div id="app">
+                            <h1>Welcome to CStoreFE</h1>
+                            <img src="/images/FE.jpg" alt="" srcset="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="layui-footer footer footer-demo" id="admin-footer">
+            <div class="layui-main">
+                <p>2016 &copy;
+                    <a href="/">丝路网云官网后台管理系统</a> LGPL license
+                </p>
+            </div>
+        </div> -->
+        <div class="site-tree-mobile layui-hide">
+            <i class="layui-icon">&#xe602;</i>
+        </div>
+
+
+        <script type="text/javascript" src="/admin/plugins/layui/layui.js"></script>
+        <script type="text/javascript" src="/admin/datas/nav.js"></script>
+        <script src="/admin/js/index.js"></script>
+        <script>
+            layui.use('layer', function() {
+                var $ = layui.jquery,
+                    layer = layui.layer;
+            });
+        </script>
+    </div>
+</body>
+</html>
