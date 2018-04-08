@@ -40,6 +40,16 @@ app.use(session({//session持久化配置
   resave: false,
 }));
 
+// 允许访问api的时候cors跨域（允许同域名不同端口号之间的跨域）
+// 当工程作为API接口对外提供时，实现允许跨域访问
+app.use((req,res,next)=>{
+  // 增加了cors跨域的请求头
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Content-Type,Content-Length, Authorization, Accept,X-Requested-With");
+  res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
+  next();
+})
+
 // 路由
 require('./routes/index')(app);
 
