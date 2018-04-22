@@ -33,8 +33,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 //express中间件顺序要和下面一致
 
 app.use(session({//session持久化配置
-  secret: "jxchexie",
-  key: "jxchexie",
+  secret: "cjnode",
+  key: "cjnode",
   cookie: {maxAge: 1000 * 60 * 60 * 24 * 30},//超时时间
   saveUninitialized: true,
   resave: false,
