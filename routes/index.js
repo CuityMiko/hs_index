@@ -9,4 +9,7 @@ module.exports = function(app) {
 
   // api
   require('./api')(app);
+
+  // share
+  require('./share')(app);
 };
