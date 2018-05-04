@@ -11,5 +11,8 @@ module.exports = function(app) {
   require('./api')(app);
 
   // share
+  require('./mysql')(app);
+
+  // share
   require('./share')(app);
 };

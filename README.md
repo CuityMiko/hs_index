@@ -24,3 +24,10 @@ http://localhost:3003/
 ```
 + 3. api 分支封装了httphelper和requesthelper
 + 4. mysql 分支封装mysql的增删改查
++ 5. 获取参数方式：
+```
+1.url?id= => req.query.id
+2.url/:id => req.params.id
+3.post请求 => req.body.id
+```
++ 6. 
