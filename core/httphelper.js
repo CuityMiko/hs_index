@@ -8,11 +8,35 @@ var https = require('https');
 var qs = require('querystring');
 var iconv = require('iconv-lite');
 var BufferHelper = require('bufferhelper');
+var q = require('q');
+var config = require('../config/site_conf');
 
 /**
- * @exports core/httpHelper
+ * 获取api url
+ * @param {*} url 
  */
-var httpHelper = {
+let getapi = (url) => {
+    let _urls = url.split('/');
+    let _url = url;
+    switch (_urls[1]) {
+        case 'api':
+            _url = config.siteConf.scenicurl + _url;
+            break;
+        case 'movie':
+            _url = config.siteConf.movieurl + _url;
+            break;
+        case 'cstore':
+            _url = config.siteConf.mockurl + _url;
+        default:
+            break;
+    }
+    return _url;
+}
+
+/**
+ * @exports core/httphelper
+ */
+var httphelper = {
 
     /**
      * @description 发起远程请求的基础方法
@@ -25,10 +49,9 @@ var httpHelper = {
      * @param {Boolean=} [options.buffer=false] 是否直接返回二进制数据
      * @param {Number=} timeout 超时时间，单位为毫秒
      * @param {Object=} data 请求发送的数据对象
-     * @param {RequestCallback} callback 处理请求响应的回调方法，查看 {@link RequestCallback}
      * @param {String} [encoding='utf-8'] 编码格式
      */
-    request: function (options, timeout, data, callback, encoding) {
+    request: function (options, timeout, data, encoding) {
         var httpLib = http;
         if (options.protocol && options.protocol === 'https:') {
             httpLib = https;
@@ -47,6 +70,8 @@ var httpHelper = {
         /** 为true时直接返回数据流 */
         options.buffer = options.buffer || false;
 
+        var deferred = q.defer(); // promise
+
         var req = httpLib.request(options, function (res) {
             var bufferHelper = new BufferHelper();
             res.on('data', function (chunk) {
@@ -64,23 +89,25 @@ var httpHelper = {
                         _data = iconv.decode(bufferHelper.toBuffer(), 'utf-8');
                     }
                 }
-                callback(null, _data, res, req);
+                deferred.resolve(JSON.parse(_data));
             });
         });
 
         req.on('error', function (err) {
-            callback(err);
+            deferred.reject(err);
         });
 
         req.write(content);
 
         if (timeout && timeout > 0) {
             req.setTimeout(timeout, function () {
-                callback(new Error('request timeout'), '');
+                deferred.reject(new Error('request timeout'));
             });
         }
 
         req.end();
+
+        return deferred.promise;
     },
 
     /**
@@ -91,14 +118,16 @@ var httpHelper = {
      * @param {String} [encoding='utf-8'] 编码格式
      * @param {Object=} header 请求头对象
      */
-    get: function (url, timeout, callback, encoding, header) {
+    get: function (url, header) {
+        url = getapi(url);
         var options = require('url').parse(url);
         options.method = 'GET';
         if (header) {
             options.headers = header;
         }
-
-        this.request(options, timeout, {}, callback, encoding);
+        let timeout = 15000;
+        let encoding = 'utf-8';
+        return this.request(options, timeout, {}, encoding);
     },
 
     /**
@@ -112,7 +141,9 @@ var httpHelper = {
      * @param {String=} reqEncoding 请求数据的编码格式，如果是gbk，使用escape编码
      * @param {Boolean=} [json=false] 发送的是否json数据
      */
-    post: function (url, timeout, data, callback, encoding, header, reqEncoding, json) {
+    post: function (url, data, header, json, reqEncoding) {
+        url = getapi(url);
+        console.log(url);
         var options = require('url').parse(url);
         options.method = 'POST';
         if (header) {
@@ -124,7 +155,9 @@ var httpHelper = {
         if (json) {
             options.json = json;
         }
-        this.request(options, timeout, data, callback, encoding);
+        let timeout = 15000;
+        let encoding = 'utf-8';
+        return this.request(options, timeout, data, encoding);
     }
 };
 
@@ -136,4 +169,4 @@ var httpHelper = {
  * @param {Object} res 响应流对象
  */
 
-module.exports = httpHelper;
+module.exports = httphelper;

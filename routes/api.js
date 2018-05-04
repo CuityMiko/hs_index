@@ -12,4 +12,7 @@ module.exports = function(app) {
 
   // mocks
   app.get('/api/mocks', Api.mocks);
+
+  // goods
+  app.get('/api/goods', Api.goods);
 };
