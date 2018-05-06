@@ -76,13 +76,37 @@ studentSchema.statics.modifyStudent=(conditions,updated)=>{
 /**
  * 封装删除方法
  */
-studentSchema.statics.deleteStudent=(conditions)=>{
+studentSchema.statics.deleteStudent = (conditions) => {
     var deferred = q.defer();
     mongodb.db.model('Student').remove(conditions,(err,result)=>{
         if(err)
             deferred.reject(err);
         else
             deferred.resolve(result);
+    })
+    return deferred.promise;
+}
+
+
+/**
+ * 分页
+ */
+studentSchema.statics.getPagedata = (conditions, pageindex, pagesize) => {
+    let _start = (parseInt(pageindex)-1) * parseInt(pagesize);
+    let _studentModel = mongodb.db.model('Student');
+    let _result = _studentModel.find(conditions);
+    var deferred = q.defer();
+    _result.sort({'_id':-1}).skip(_start).limit(parseInt(pagesize)).exec((err,pdata)=>{
+        if(err)
+            deferred.reject(err);
+        else{
+            _studentModel.find(conditions).count((err,data)=>{
+                if(err)
+                    deferred.reject(err);
+                else
+                    deferred.resolve({ total:data, result:pdata });
+            });
+        }
     })
     return deferred.promise;
 }

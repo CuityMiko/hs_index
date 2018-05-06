@@ -71,4 +71,15 @@ let deletestudent = (req, res) => {
     })
 }
 
-module.exports = { index, student, addstudent, modifystudent, deletestudent }
+// 获取分页数据
+let pager = (req, res) => {
+    let _pageindex = req.params.pageindex;
+    let _pagesize = req.params.pagesize;
+    studentModel.getPagedata({}, _pageindex, _pagesize).then((result) => {
+        res.json(result);
+    }).catch((err) => {
+        console.log(err);
+    })
+}
+
+module.exports = { index, student, addstudent, modifystudent, deletestudent, pager }

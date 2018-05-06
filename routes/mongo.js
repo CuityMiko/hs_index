@@ -21,4 +21,7 @@ module.exports = function(app) {
 
   // delete student
   app.post('/mongo/student/delete/:id', Mongo.deletestudent);
+
+  // mongo pager
+  app.get('/mongo/pager/:pageindex/:pagesize', Mongo.pager);
 };
