@@ -30,4 +30,4 @@ http://localhost:3003/
 2.url/:id => req.params.id
 3.post请求 => req.body.id
 ```
-+ 6. 
++ 6. mongodb分支使用mongoose实现增删改查
