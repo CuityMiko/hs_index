@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/admin/plugins/layui/css/layui.css" media="all" />
     <link rel="stylesheet" href="/admin/css/global.css" media="all">
     <link rel="stylesheet" href="/admin/plugins/font-awesome/css/font-awesome.min.css">
+    <script type="text/javascript" src="/admin/plugins/layui/layui.js"></script>
     <style>
         #app{
             display: flex;
@@ -48,6 +49,7 @@
                             </dl>
                         </li>
                         <li class="layui-nav-item"><a href="/share">Share</a></li>
+                        <li class="layui-nav-item"><a href="/mysql">Node_Mysql</a></li>
                     </ul>
             </div>
         </div>
@@ -73,15 +75,12 @@
             <i class="layui-icon">&#xe602;</i>
         </div>
 
-
-        <script type="text/javascript" src="/admin/plugins/layui/layui.js"></script>
-        <script type="text/javascript" src="/admin/datas/nav.js"></script>
-        <script src="/admin/js/index.js"></script>
         <script>
             layui.use('layer', function() {
                 var $ = layui.jquery,
                     layer = layui.layer;
             });
+
             // 获取当前年份
             document.getElementById('spdate').innerText = (new Date()).getFullYear();
         </script>

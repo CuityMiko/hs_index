@@ -1,0 +1,49 @@
+<style scoped>
+    #useroption {
+        margin: 1rem;
+    }
+</style>
+<div id="useroption">
+    <fieldset class="layui-elem-field">
+        <legend><%=model.title %></legend>
+        <input type="hidden" id="hdid" value="<%=model.id %>">
+        <div class="layui-field-box">
+            <form class="layui-form" action="">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">user_id</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="user_id" value="<%=model.user ? model.user.ali_user_id : '' %>" name="user_id" lay-verify="user_id" autocomplete="off" placeholder="请输入user_id" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">user_name</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="user_name" value="<%=model.user ? model.user.ali_user_name : '' %>" name="user_name" lay-verify="user_name" autocomplete="off" placeholder="请输入user_name" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">user_phone</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="user_phone" value="<%=model.user ? model.user.ali_user_phone : '' %>" name="user_phone" lay-verify="user_phone" autocomplete="off" placeholder="请输入user_phone" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">user_avatar</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="user_avatar" value="<%=model.user ? model.user.ali_user_avatar : '' %>" name="user_avatar" lay-verify="user_avatar" autocomplete="off" placeholder="请输入user_avatar" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">access_token</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="access_token" value="<%=model.user ? model.user.access_token : '' %>" name="access_token" lay-verify="access_token" autocomplete="off" placeholder="请输入access_token" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item" style="text-align: center;">
+                    <button class="layui-btn layui-btn-xs" id="btnopreate" type="button"><%=model.title %></button>
+                </div>
+            </form>
+        </div>
+    </fieldset>  
+</div>
+<script src="/app/user/user.controller.js"></script>

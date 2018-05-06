@@ -1,0 +1,52 @@
+<style scoped>
+    #user{
+        margin: 1rem;
+    }
+</style>
+<div id="user">
+    <fieldset class="layui-elem-field layui-field-title">
+        <legend>Node for Mysql</legend>
+    </fieldset>       
+    <blockquote class="layui-elem-quote">
+        <a href="/mysql/user" class="layui-btn">添 加</a>
+    </blockquote>
+    <table class="layui-table">
+        <colgroup>
+            <col width="100">
+            <col width="100">
+            <col width="100">
+            <col width="100">
+            <col width="200">
+            <col width="200">
+            <col>
+        </colgroup>
+        <thead>
+            <tr>
+                <th>user_id</th>
+                <th>user_name</th>
+                <th>user_phone</th>
+                <th>user_avatar</th>
+                <th>access_token</th>
+                <th>操 作</th>
+            </tr> 
+        </thead>
+        <tbody>
+            <% for(var i=0;i<model.users.length;i++) { %>
+                <tr>
+                    <td><%=model.users[i].ali_user_id %></td>
+                    <td><%=model.users[i].ali_user_name %></td>
+                    <td><%=model.users[i].ali_user_phone %></td>
+                    <td>
+                        <img src="<%=model.users[i].ali_user_avatar %>" width="60" height="60">
+                    </td>
+                    <td><%=model.users[i].access_token %></td>
+                    <td>
+                        <a href="/mysql/user/<%=model.users[i].id %>" class="layui-btn layui-btn-xs layui-btn-normal">修 改</a>
+                        <button class="layui-btn layui-btn-xs layui-btn-danger btndelete" data-id="<%=model.users[i].id %>">删 除</button>
+                    </td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table> 
+</div>
+<script src="/app/user/index.controller.js"></script>
