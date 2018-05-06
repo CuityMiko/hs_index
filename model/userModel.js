@@ -34,7 +34,14 @@ User.queryUserPageList = function (page) {
             deferred.reject(err);
         }
         else{
-            deferred.resolve(data);
+            db.query('SELECT COUNT(1) AS total FROM applets_user', [],function(err,result){
+                if(err){
+                    deferred.reject(err);
+                }
+                else{
+                    deferred.resolve({ total: result[0].total, data: data});
+                }
+            });
         }
     });
     return deferred.promise;

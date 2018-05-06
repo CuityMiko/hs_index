@@ -15,5 +15,5 @@ module.exports = function(app) {
 
   app.post('/mysql/user/modify', Mysql.modifyuser)
 
-  app.post('/mysql/user/delete/:id', Mysql.deleteuser)
+  app.get('/mysql/pager/:pageindex/:pagesize', Mysql.pager)
 };

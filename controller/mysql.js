@@ -96,3 +96,18 @@ exports.deleteuser = (req, res) => {
         });
     })
 }
+
+// 获取分页数据
+exports.pager = (req, res) => {
+    let _pageindex = req.params.pageindex || 1;
+    let _pagesize = req.params.pagesize || 10;
+    let _page = {
+        pageindex: parseInt(_pageindex),
+        pagesize: parseInt(_pagesize)
+    }
+    UserModel.queryUserPageList(_page).then((data) => {
+        res.json(data);
+    }).catch((err) => {
+        console.log(err);
+    })
+}

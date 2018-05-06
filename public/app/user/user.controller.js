@@ -43,19 +43,6 @@ layui.use('layer', function() {
                     }
                 })
             }
-              
-            //   layer.open({
-            //     title: '温馨提示'
-            //     ,type: 1
-            //     ,offset: 'rb'
-            //     ,anim: 2
-            //     ,content: '<div style="padding: 20px 80px;">删除成功！</div>'
-            //     ,shade: 0 //不显示遮罩
-            //     ,time: 3000
-            //     ,end: function() {
-            //         layer.msg('close too!')
-            //     }
-            //   }); 
         })    
     })
 });

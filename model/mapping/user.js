@@ -13,8 +13,10 @@ let addUser = `INSERT INTO applets_user VALUES(NULL,?,?,?,?,?)`;
 // 更新User
 let updateUser = `UPDATE applets_user SET ali_user_id=?,ali_user_name=?,ali_user_phone=?,ali_user_avatar=?,access_token=? WHERE id=?`;
 
-// // 删除User
+// 删除User
 let deleteUser = `delete from applets_user WHERE id=?`;
+
+let getTotal = `SELECT COUNT(1) AS total FROM applets_user`
 
 exports.User = {
     queryUserList,
@@ -22,5 +24,6 @@ exports.User = {
     queryUserById,
     addUser,
     updateUser,
-    deleteUser
+    deleteUser,
+    getTotal
 }
