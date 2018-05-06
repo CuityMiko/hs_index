@@ -10,9 +10,12 @@ module.exports = function(app) {
   // api
   require('./api')(app);
 
-  // share
+  // msql
   require('./mysql')(app);
 
   // share
   require('./share')(app);
+
+  // xml
+  require('./xml')(app);
 };
