@@ -31,3 +31,18 @@ http://localhost:3003/
 3.post请求 => req.body.id
 ```
 + 6. mongodb分支使用mongoose实现增删改查
+```
+# mongodb启动
+mongod --dbpath D:\config\mongodb\data
+
+# url
+http://localhost:27017/
+
+# mongoose
+npm i mongoose promise.prototype.finally -S
+
+mongoose中也使用promise语法，但是使用mongoose中自带的promise语法会产生警告
+解决方式是在引入mongoose后将mongoose的promise改为es6的promise：
+const mongoose = require('mongoose')
+mongoose.Promise = global.Promise;
+```

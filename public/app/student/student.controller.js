@@ -3,23 +3,20 @@ layui.use('layer', function() {
         layer = layui.layer;
     $(function() {
         $("#btnopreate").on("click", function() {
-            if ($("#user_id").val().trim() == "" || $("#user_name").val().trim() == "" || $("#user_phone").val().trim() == "" ||
-            $("#user_avatar").val().trim() == "" || $("#access_token").val().trim() == "") {
+            if ($("#username").val().trim() == "" || $("#age").val().trim() == "" || $("#phone").val().trim() == "") {
                 layer.msg('请完善信息后提交！');
             } else {
                 let _url = '';
                 if ($("#hdid").val()) {
-                    _url = '/mysql/user/modify'
+                    _url = '/mongo/student/modify'
                 } else {
-                    _url = '/mysql/user/add';
+                    _url = '/mongo/student/add';
                 }
                 $.post(_url,{
                     id: $("#hdid").val(),
-                    user_id: $("#user_id").val().trim(),
-                    user_name: $("#user_name").val().trim(),
-                    user_phone: $("#user_phone").val().trim(),
-                    user_avatar: $("#user_avatar").val().trim(),
-                    access_token: $("#access_token").val().trim()
+                    username: $("#username").val().trim(),
+                    age: $("#age").val().trim(),
+                    phone: $("#phone").val().trim()
                 },function(res) {
                     if (res.success) {
                         layer.open({
@@ -32,17 +29,17 @@ layui.use('layer', function() {
                             ,btnAlign: 'c' 
                             ,shade: 0.3 
                             ,cancel: function() {
-                                window.location.href="/mysql";
+                                window.location.href="/mongo";
                             }
                             ,yes: function(){
-                                window.location.href="/mysql";
+                                window.location.href="/mongo";
                             }
                         }); 
                     } else {
                         layer.msg('保存失败！');
                     }
                 })
-            } 
+            }
         })    
     })
 });
