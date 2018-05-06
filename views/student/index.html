@@ -1,0 +1,44 @@
+<style scoped>
+    #student{
+        margin: 1rem;
+    }
+</style>
+<div id="student">
+    <fieldset class="layui-elem-field layui-field-title">
+        <legend>Node for Mongodb</legend>
+    </fieldset>       
+    <blockquote class="layui-elem-quote">
+        <a href="/mongo/student" class="layui-btn">添 加</a>
+    </blockquote>
+    <table class="layui-table">
+        <colgroup>
+            <col width="100">
+            <col width="100">
+            <col width="100">
+            <col width="200">
+            <col>
+        </colgroup>
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>手机号</th>
+                <th>操 作</th>
+            </tr> 
+        </thead>
+        <tbody>
+            <% for(var i=0;i<model.students.length;i++) { %>
+                <tr>
+                    <td><%=model.students[i].username %></td>
+                    <td><%=model.students[i].age %></td>
+                    <td><%=model.students[i].phone %></td>
+                    <td>
+                        <a href="/mongo/student/<%=model.students[i]._id %>" class="layui-btn layui-btn-xs layui-btn-normal">修 改</a>
+                        <button class="layui-btn layui-btn-xs layui-btn-danger btndelete" data-id="<%=model.students[i]._id %>">删 除</button>
+                    </td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table> 
+</div>
+<script src="/app/student/index.controller.js"></script>
