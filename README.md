@@ -41,6 +41,11 @@ http://localhost:27017/
 # mongoose
 npm i mongoose promise.prototype.finally -S
 
+# Linux配置
+mongod --dbpath /root/opt/db/mongodb/data --logpath /root/opt/db/mongodb/data/logs/mongo.log --logappend -fork -port 27017
+/sbin/iptables -I INPUT -p tcp --dport 3003 -j ACCEPT
+/sbin/iptables -I INPUT -p tcp --dport 27017 -j ACCEPT
+
 mongoose中也使用promise语法，但是使用mongoose中自带的promise语法会产生警告
 解决方式是在引入mongoose后将mongoose的promise改为es6的promise：
 const mongoose = require('mongoose')
