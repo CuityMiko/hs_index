@@ -27,6 +27,7 @@
     "request": "^2.85.0",
     "request-promise": "^4.2.2",
     "serve-favicon": "~2.3.0",
+    "socket.io": "^2.1.0",
     "svg-captcha": "^1.2.1",
     "ueditor": "^1.2.0",
     "xml2js": "^0.4.19"

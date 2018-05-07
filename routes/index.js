@@ -21,4 +21,7 @@ module.exports = function(app) {
 
   // mongodb
   require('./mongo')(app);
+
+  // notice
+  require('./notice')(app);
 };

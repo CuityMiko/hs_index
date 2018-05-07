@@ -47,3 +47,7 @@ const mongoose = require('mongoose')
 mongoose.Promise = global.Promise;
 ```
 + 7. socketio分支nodejs实现socket.io
+```
+# install
+npm i socket.io -S
+```
