@@ -1,6 +1,19 @@
 layui.use('layer', function() {
     var $ = layui.jquery,
         layer = layui.layer;
+    var socket = io();
+
+    // 系统通知
+    function tonotice(name, flag) {
+        let _info = '';
+        if (flag > 0) {
+            _info = `${name}信息内容已修改！`;
+        } else {
+            _info = `新增${name}信息内容！`;
+        }
+        socket.emit("send", _info);
+    }
+
     $(function() {
         $("#btnopreate").on("click", function() {
             if ($("#username").val().trim() == "" || $("#age").val().trim() == "" || $("#phone").val().trim() == "") {
@@ -19,6 +32,8 @@ layui.use('layer', function() {
                     phone: $("#phone").val().trim()
                 },function(res) {
                     if (res.success) {
+                        // 系统通知
+                        tonotice($("#username").val().trim(), parseInt($("#hdid").val()));
                         layer.open({
                             title: '温馨提示'
                             ,type: 1
