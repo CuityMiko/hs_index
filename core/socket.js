@@ -12,7 +12,8 @@ module.exports = (server) => {
             // 给客户端发送消息
             // socket.emit("notice",msg);
             // 给所有客户端广播消息
-            io.emit("notice", msg);
+            let _sender =  msg.split(':')[0];
+            io.emit(_sender, msg.split(':')[1]);
         });
     })
 }

@@ -55,4 +55,18 @@ mongoose.Promise = global.Promise;
 ```
 # install
 npm i socket.io -S
+
+# socket.io客户端跨域调用
+var socket = io.connect('47.97.190.44:3003');
+// 监听从服务器端传过来的消息
+socket.on("notice", function(msg) {
+    console.log(msg);
+    if (msg) {
+        console.log(msg);
+    }
+});
+
+# 给不同的客户端推送消息：通过userid监听不同的用户
+客户端：socket.on(userid,(msg) => {})
+服务端：io.emit(userid, msg)
 ```

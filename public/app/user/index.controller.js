@@ -2,6 +2,23 @@ layui.use('layer', function() {
     var $ = layui.jquery,
         layer = layui.layer;
 
+    var socket = io();
+    socket.on("mysql", function(msg) {
+        if (msg) {
+            layer.open({
+                title: '系统通知',
+                content: msg,
+                offset: 'rb', // 右下角显示
+                skin: 'layui-layer-lan',
+                area: ['400px', '240px'],
+                shade: 0,
+                time: 5000,
+                anim: 6,
+                isOutAnim: true
+            });
+        }
+    });
+
     $(function (){
         // 删除
         $(".btndelete").on("click",function(){
