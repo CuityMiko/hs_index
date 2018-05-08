@@ -24,4 +24,7 @@ module.exports = function(app) {
 
   // notice
   require('./notice')(app);
+
+  // redis
+  require('./session_redis')(app);
 };

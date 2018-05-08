@@ -72,5 +72,6 @@ socket.on("notice", function(msg) {
 ```
 + 8. redis分支nodejs实现redis
 ```
-
+# install
+npm i redis -S
 ```

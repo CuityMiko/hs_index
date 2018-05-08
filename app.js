@@ -5,11 +5,13 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+var redisStore = require('connect-redis')(session);
 // 图片验证码
 var svgCaptcha = require('svg-captcha');
 var expressLayouts = require('express-ejs-layouts'); // layout for html
 
 var app = express();
+var site_config = require('./config/site_conf.js');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -30,12 +32,26 @@ app.use(express.static(path.join(__dirname, 'public')));
 // secret在正式用的时候务必修改
 // express中间件顺序要和下面一致
 // session持久化配置
+// app.use(session({
+//   secret: "cjnode",
+//   key: "cjnode",
+//   cookie: {maxAge: 1000 * 60 * 60 * 24 * 30},// 超时时间
+//   saveUninitialized: true,
+//   resave: false,
+// }));
+
+//使用redis存储session
 app.use(session({
-  secret: "cjnode",
-  key: "cjnode",
-  cookie: {maxAge: 1000 * 60 * 60 * 24 * 30},// 超时时间
-  saveUninitialized: true,
+  store: new redisStore({
+    host: site_config.siteConf.redishost,
+    port: site_config.siteConf.redisport,
+    db: 1,
+    logErrors: true,
+    pass: 'cj123456'
+  }),
+  secret: 'cjnode',
   resave: false,
+  saveUninitialized: true
 }));
 
 // 允许访问api的时候cors跨域（允许同域名不同端口号之间的跨域）
@@ -51,7 +67,7 @@ app.use((req,res,next)=>{
 // 路由
 require('./routes/index')(app);
 
-// catch 404 and forward to error handler
+// catch 404 and forward to error handler 
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
@@ -80,5 +96,18 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
+
+// function authentication (req,res,next){
+// 	if(!req.session.user){
+// 		return res.redirect('/login');		
+// 	}
+// 	next();
+// }
+// function notAuthentication(req,res,next){
+// 	if(req.session.user){
+// 		return res.redirect('/');
+// 	}
+// 	next();
+// }
 
 module.exports = app;
