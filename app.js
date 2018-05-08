@@ -45,9 +45,8 @@ app.use(session({
   store: new redisStore({
     host: site_config.siteConf.redishost,
     port: site_config.siteConf.redisport,
-    db: 1,
-    logErrors: true,
-    pass: 'cj123456'
+    db: 1, // site_config.siteConf.redisdb
+    logErrors: true
   }),
   secret: 'cjnode',
   resave: false,

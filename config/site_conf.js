@@ -8,5 +8,6 @@ exports.siteConf = {
     scenicurl: 'http://scenic-applets.chuangjiangx.com',
     mongodburl: 'mongodb://47.97.190.44:27017/',
     redishost: '127.0.0.1',
-    redisport: 6379
+    redisport: 6379,
+    redisdb: 2
 }
