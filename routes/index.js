@@ -30,4 +30,7 @@ module.exports = function(app) {
 
   // queue
   require('./queue')(app);
+
+  // queue_socket
+  require('./queue_socket')(app);
 };

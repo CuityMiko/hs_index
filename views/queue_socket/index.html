@@ -1,0 +1,45 @@
+<style scoped>
+    #queue_socketio {
+        margin: 1rem;
+    }
+</style>
+
+<div id="queue_socketio">
+    <% include common/info.html %>
+    <fieldset class="layui-elem-field">
+        <div class="layui-field-box">
+            <form class="layui-form" action="">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">消息：</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="info" name="info" lay-verify="info" autocomplete="off" placeholder="请输入消息" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item" style="text-align: center;">
+                    <button class="layui-btn layui-btn-xs" id="btntijiao" type="button">提交</button>
+                </div>
+            </form>
+        </div>
+    </fieldset>  
+</div>
+<script>
+    layui.use('layer', function() {
+        var $ = layui.jquery,
+            layer = layui.layer;
+        $(function(){
+            $("#btntijiao").on("click", () => {
+                if($("#info").val().trim()) {
+                    $.post('/queue_socket/addinfo', { info: $("#info").val().trim() }, (res) => {
+                        if (res && res.success) {
+                            layer.msg('提交成功！');
+                            $("#info").val('');
+                            console.log(res.data);
+                        } else {
+                            layer.msg('提交失败！');
+                        }
+                    })
+                }
+            })
+        })
+    });
+</script>

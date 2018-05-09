@@ -1,0 +1,27 @@
+<style scoped>
+    #queue_socketio {
+        margin: 1rem;
+    }
+</style>
+
+<div id="queue_socketio">
+    <% include common/info.html %>
+    <div id="divinfos">
+    </div>
+</div>
+<script>
+    layui.use(['layer', 'element'], function() {
+        var $ = layui.jquery,
+            layer = layui.layer;
+        var socket = io();
+        $(function(){
+            // 监听从服务器端传过来的消息
+            socket.on("queue", function(msg) {
+                console.log(msg)
+                if (msg) {
+                    $("#divinfos").append('<blockquote class="layui-elem-quote">' + msg + '</blockquote>');
+                }
+            });
+        })
+    });
+</script>

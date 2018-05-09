@@ -26,6 +26,7 @@ var server = http.createServer(app);
  * socket.io
  */
 require('../core/socket')(server)
+// require('../core/socket_queue')(server)
 
 /**
  * Listen on provided port, on all network interfaces.
