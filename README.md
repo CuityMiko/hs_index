@@ -80,3 +80,4 @@ npm i redis -S
 # install
 npm i super-queue -S
 ```
++ 10. queue_socketio分支是nodejs实现queue和socketio结合Demo
