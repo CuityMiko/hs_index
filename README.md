@@ -76,3 +76,7 @@ socket.on("notice", function(msg) {
 npm i redis -S
 ```
 + 9. queue分支nodejs实现消息队列
+```
+# install
+npm i super-queue -S
+```

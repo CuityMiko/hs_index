@@ -27,4 +27,7 @@ module.exports = function(app) {
 
   // redis
   require('./session_redis')(app);
+
+  // queue
+  require('./queue')(app);
 };

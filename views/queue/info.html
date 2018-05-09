@@ -1,0 +1,40 @@
+<style scoped>
+    #queueinfo {
+        margin: 1rem;
+    }
+</style>
+
+<div id="queueinfo">
+    <fieldset class="layui-elem-field layui-field-title">
+        <legend>Node for Queue</legend>
+    </fieldset>  
+    <fieldset class="layui-elem-field">
+        <legend>nodejs for queue</legend>
+        <div class="layui-field-box">
+            消息队列
+        </div>
+    </fieldset>  
+</div>
+<script>
+    layui.use('layer', function() {
+        var $ = layui.jquery,
+            layer = layui.layer;
+        $(function(){
+            var ws = new WebSocket("/queue/getinfo");
+
+            ws.onopen = function(evt) { 
+                console.log("Connection open ..."); 
+                ws.send("Hello WebSockets!");
+            };
+
+            ws.onmessage = function(evt) {
+                console.log( "Received Message: " + evt.data);
+                // ws.close();
+            };
+
+            ws.onclose = function(evt) {
+                console.log("Connection closed.");
+            };
+        })
+    });
+</script>
