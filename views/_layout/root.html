@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/admin/plugins/layui/css/layui.css" media="all" />
     <link rel="stylesheet" href="/admin/css/global.css" media="all">
     <link rel="stylesheet" href="/admin/plugins/font-awesome/css/font-awesome.min.css">
+    <script type="text/javascript" src="/admin/plugins/layui/layui.js"></script>
     <style>
         #app{
             display: flex;
@@ -37,7 +38,7 @@
                 </div>
             </div>
         </div>
-        <div class="layui-side layui-bg-black" id="admin-side">
+        <!-- <div class="layui-side layui-bg-black" id="admin-side">
             <div class="layui-side-scroll" id="admin-navbar-side" lay-filter="side">
                     <ul class="layui-nav layui-nav-tree" lay-filter="test">
                         <li class="layui-nav-item layui-nav-itemed">
@@ -50,17 +51,9 @@
                         <li class="layui-nav-item"><a href="/share">Share</a></li>
                     </ul>
             </div>
-        </div>
-        <div class="layui-body" style="bottom: 0;border-left: solid 1px #1AA094;" id="admin-body">
-            <div class="layui-tab admin-nav-card layui-tab-brief" lay-filter="admin-tab">
-                <div class="layui-tab-content" style="min-height: 150px; padding: 5px 0 0 0;">
-                    <div class="layui-tab-item layui-show">
-                        <%-body %>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="layui-footer footer footer-demo" id="admin-footer">
+        </div> -->
+        <%-body %>
+        <div class="footer footer-demo" id="admin-footer">
             <div class="layui-main">
                 <p>
                     <span id="spdate"></span> 
@@ -72,11 +65,6 @@
         <div class="site-tree-mobile layui-hide">
             <i class="layui-icon">&#xe602;</i>
         </div>
-
-
-        <script type="text/javascript" src="/admin/plugins/layui/layui.js"></script>
-        <script type="text/javascript" src="/admin/datas/nav.js"></script>
-        <script src="/admin/js/index.js"></script>
         <script>
             layui.use('layer', function() {
                 var $ = layui.jquery,

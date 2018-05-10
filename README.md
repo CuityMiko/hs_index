@@ -1,4 +1,4 @@
-### CJ_FE 基于node搭建的http-server，可提供api调用
+### CJ_FE 基于node搭建的mini型http-server，可提供api调用
 
 + 1. 默认端口号为3003，可在config/site_conf文件下修改port字段
 + 2. 项目运行
@@ -22,4 +22,3 @@ npm start
 # browser
 http://localhost:3003/
 ```
-+ 3.
