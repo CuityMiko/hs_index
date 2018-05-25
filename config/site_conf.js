@@ -6,5 +6,5 @@ exports.siteConf = {
     movieurl: 'https://api.douban.com/v2',
     mockurl: 'https://www.easy-mock.com/mock/59bce026e0dc663341ac6dad',
     scenicurl: 'http://scenic-applets.chuangjiangx.com',
-    mongodburl: 'mongodb://127.0.0.1:27017/'
+    mongodburl: 'mongodb://scenic-h5.chuangjiangx.com:27017/'
 }
