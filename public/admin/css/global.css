@@ -42,7 +42,7 @@
 .header-demo .layui-nav .layui-this a{padding: 0 20px;}
 
 /* 底部 */
-.footer{padding: 30px 0; line-height: 30px; text-align: center; background-color: #eee; color: #666; font-weight: 300;}
+.footer{padding: 30px 0; line-height: 30px; text-align: center; background-color: #eee; color: #666; font-weight: 300; position: fixed; bottom: 0px; width: 100%;}
 body .layui-layout-admin .footer-demo{height: auto; padding: 5px 0; line-height: 39px;}
 .footer a{padding: 0 5px;}
 
@@ -389,7 +389,7 @@ body .site-demo-nav .layui-nav-item{line-height: 40px}
   .layui-layout-admin .layui-side{position: fixed; top: 0; left: -260px; transition: all .3s; -webkit-transition: all .3s; z-index: 10000;}
   .layui-body{position: static; bottom: 0; left: 0;}
   .site-mobile .layui-side{left: 0;}
-  body .layui-layout-admin .footer-demo{position: static;}
+  body .layui-layout-admin .footer-demo{position: fixed;}
 
   .site-demo-area,
   .site-demo-editor,

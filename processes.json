@@ -1,6 +1,6 @@
 {
     "apps" : [{
-      "name" : "cj_fe",  // 名称
+      "name" : "sdb_fe_api",  // 名称
       "script": "./bin/www", // 程序入库
       "cwd": "./",           // 根目录
       "watch":[
