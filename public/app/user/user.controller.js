@@ -42,11 +42,7 @@ layui.use('layer', function() {
                         layer.msg('保存失败！');
                     }
                 })
-<<<<<<< HEAD
-            }
-=======
             } 
->>>>>>> mongodb
         })    
     })
 });
