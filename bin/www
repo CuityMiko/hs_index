@@ -12,12 +12,7 @@ var siteconf = require('../config/site_conf')
 /**
  * Get port from environment and store in Express.
  */
-
-<<<<<<< HEAD
-var port = normalizePort(process.env.PORT || '4000');
-=======
 var port = normalizePort(process.env.PORT || siteconf.siteConf.port);
->>>>>>> 57ff7abf5741f06efb285a0b8a435e2faa195ce3
 app.set('port', port);
 
 /**
