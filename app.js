@@ -43,6 +43,16 @@ app.use(session({//session持久化配置
 // 路由
 require('./routes/index')(app);
 
+// 打包的静态文件默认访问
+// 此处用于React Web打包后的项目访问方式
+// React router的history模式一般为browserhistory，但是此种方式的URL不能在浏览器中赋值
+// 解决方式就是将React项目打包文件作为服务器资源渲染，即放在public目录下进行访问
+// 如果不是React项目则注释以下代码
+// 值得一提的是，Vue项目没有如上问题，则不需要以下代码
+app.get('*', function (req, res){
+    res.sendFile(path.resolve(__dirname, 'public', 'index.html'))
+})
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
